@@ -3,7 +3,6 @@
 import math
 
 # ## Task 0.1
-from typing import Callable, Iterable
 
 #
 # Implementation of a prelude of elementary functions.
@@ -34,6 +33,67 @@ from typing import Callable, Iterable
 
 # TODO: Implement for Task 0.1.
 
+def mul(x, y):
+    return x * y
+
+
+def id(x):
+    return x
+
+
+def add(x, y):
+    return x + y
+
+
+def neg(x):
+    return -x
+
+
+def lt(x, y):
+    return x < y
+
+
+def eq(x, y):
+    return x == y
+
+
+def max(x, y):
+    return x if x > y else y
+
+
+def is_close(x, y):
+    return abs(x - y) < 1e-2
+
+
+def sigmoid(x):
+    if x >= 0:
+        return 1.0 / (1.0 + math.exp(-x))
+    return math.exp(x) / (1.0 + math.exp(x))
+
+
+def relu(x):
+    return x if x >= 0 else 0
+
+
+def log(x):
+    return math.log(x)
+
+
+def inv(x):
+    return 1.0 / x
+
+
+def log_back(x, y):
+    return x / y
+
+
+def inv_back(x, y):
+    return (-1.0 / (x ** 2)) * y
+
+
+def relu_back(x, y):
+    a = 1 if x >= 0 else 0
+    return a * y
 
 # ## Task 0.3
 
@@ -52,3 +112,35 @@ from typing import Callable, Iterable
 
 
 # TODO: Implement for Task 0.3.
+
+def map(f, xs):
+    return list(f(x) for x in xs)
+
+
+def zipWith(f, xs, ys):
+    return list(f(x, y) for x, y in zip(xs, ys))
+
+
+def reduce(f, xs):
+    if len(xs) == 0:
+        return 0
+    res = xs[0]
+    for x in xs[1:]:
+        res = f(res, x)
+    return res
+
+
+def negList(xs):
+    return list(neg(x) for x in xs)
+
+
+def addLists(xs, ys):
+    return list(add(x, y) for x, y in zip(xs, ys))
+
+
+def sum(xs):
+    return reduce(add, xs)
+
+
+def prod(xs):
+    return reduce(mul, xs)
