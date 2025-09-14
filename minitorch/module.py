@@ -30,7 +30,8 @@ class Module:
         return list(m.values())
 
     def train(self) -> None:
-        """Set the mode of this module and all descendent modules to `train`."""
+        """Set the mode of this module and all descendent modules to \
+            `train`."""
         # TODO: Implement for Task 0.4.
         self.training = True
         for module in self.modules():
@@ -52,7 +53,7 @@ class Module:
 
         """
         # TODO: Implement for Task 0.4.
-        result = []
+        result: Sequence[Tuple[str, Parameter]] = []
         for name, module in self._modules.items():
             sub = module.named_parameters()
             result.extend([(f"{name}.{n}", p) for n, p in sub])
@@ -61,9 +62,10 @@ class Module:
         return result
 
     def parameters(self) -> Sequence[Parameter]:
-        """Enumerate over all the parameters of this module and its descendents."""
+        """Enumerate over all the parameters of this module and its \
+            descendents."""
         # TODO: Implement for Task 0.4.
-        result = []
+        result: Sequence[Parameter] = []
         for module in self._modules.values():
             result.extend(module.parameters())
         for _, p in self._parameters.items():
