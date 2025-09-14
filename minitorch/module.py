@@ -53,7 +53,7 @@ class Module:
 
         """
         # TODO: Implement for Task 0.4.
-        result: Sequence[Tuple[str, Parameter]] = []
+        result: list[Tuple[str, Parameter]] = []
         for name, module in self._modules.items():
             sub = module.named_parameters()
             result.extend([(f"{name}.{n}", p) for n, p in sub])
@@ -65,7 +65,7 @@ class Module:
         """Enumerate over all the parameters of this module and its \
             descendents."""
         # TODO: Implement for Task 0.4.
-        result: Sequence[Parameter] = []
+        result: list[Parameter] = []
         for module in self._modules.values():
             result.extend(module.parameters())
         for _, p in self._parameters.items():
